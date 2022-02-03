@@ -197,8 +197,7 @@
                     </div>  
                 ';
                 
-                #if(($row['comment_answer'])!= null)
-
+         
         }
         
 
@@ -230,7 +229,7 @@
 
 </html>
 
-<!-- UPDATE `comments` SET `comment_answer` = 'Rohit Sharma & du Plessis or Ruturaj' WHERE `comments`.`comment_id` = 1; -->
+
 
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -271,6 +270,9 @@
 <script>
         $(document).ready(function() {
                 $('#login_form').on('submit', function(event) {
+                        var category = "<?php echo $comment_category?>";
+                        var username = "<?php echo $comment_username?>";
+                        var id = "<?php echo $comment_id?>"; 
                         event.preventDefault();
                         $.ajax({
                                 url: "check_login.php",
@@ -280,7 +282,7 @@
                                         if (data != '') {
                                                 $('#error_message').html(data);
                                         } else {
-                                                window.location = 'thread.php?comment_category='.$comment_cat.'&comment_username='.$comment_username.'&comment_id='.$comment_id;
+                                                window.location = 'thread.php?comment_cat='+category+'&comment_username='+username+'&comment_id='+id;
                                         }
                                 }
                         })
